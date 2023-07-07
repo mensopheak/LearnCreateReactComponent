@@ -1,83 +1,34 @@
-import Button from "./components/Button";
+import Dropdown from "./components/Dropdown";
+import { useState } from "react";
 
 function App() {
-  const handleClick = (event) => {
-    console.log(event.target);
+  const [value, setValue] = useState(null);
+  const [color, setColor] = useState(null);
+
+  const options = [
+    { label: "Option 1", value: "1" },
+    { label: "Option 2", value: "2" },
+    { label: "Option 3", value: "3" },
+  ];
+
+  const colors = [
+    { label: "Red", value: "1" },
+    { label: "Blue", value: "2" },
+    { label: "Green", value: "3" },
+  ];
+
+  const handleChange = (option) => {
+    setValue(option);
+  };
+
+  const handleChangeColor = (color) => {
+    setColor(color);
   };
 
   return (
-    <div className="flex gap-2">
-      <div className="flex flex-col gap-2">
-        <Button onClick={handleClick} primary>
-          Primary
-        </Button>
-        <Button onClick={handleClick} secondary>
-          Secondary
-        </Button>
-        <Button onClick={handleClick} success>
-          Success
-        </Button>
-        <Button onClick={handleClick} warning>
-          Warning
-        </Button>
-        <Button onClick={handleClick} danger>
-          Danger
-        </Button>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <Button onClick={handleClick} rounded primary>
-          Primary
-        </Button>
-        <Button onClick={handleClick} rounded secondary>
-          Secondary
-        </Button>
-        <Button onClick={handleClick} rounded success>
-          Success
-        </Button>
-        <Button onClick={handleClick} rounded warning>
-          Warning
-        </Button>
-        <Button onClick={handleClick} rounded danger>
-          Danger
-        </Button>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <Button onClick={handleClick} outline primary>
-          Primary
-        </Button>
-        <Button onClick={handleClick} outline secondary>
-          Secondary
-        </Button>
-        <Button onClick={handleClick} outline success>
-          Success
-        </Button>
-        <Button onClick={handleClick} outline warning>
-          Warning
-        </Button>
-        <Button onClick={handleClick} outline danger>
-          Danger
-        </Button>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <Button onClick={handleClick} outline rounded primary>
-          Primary
-        </Button>
-        <Button onClick={handleClick} outline rounded secondary>
-          Secondary
-        </Button>
-        <Button onClick={handleClick} outline rounded success>
-          Success
-        </Button>
-        <Button onClick={handleClick} outline rounded warning>
-          Warning
-        </Button>
-        <Button onClick={handleClick} outline rounded danger>
-          Danger
-        </Button>
-      </div>
+    <div className="flex gap-1">
+      <Dropdown onChange={handleChange} value={value} options={options} />
+      <Dropdown onChange={handleChangeColor} value={color} options={colors} />
     </div>
   );
 }
